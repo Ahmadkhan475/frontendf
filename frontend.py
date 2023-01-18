@@ -3,14 +3,14 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import requests
 from datetime import datetime
 
-hostName = "0.0.0.0"
-serverPort = 80
+hostName = "127.0.0.1"
+serverPort = 8081
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        x = requests.get('http://0.0.0.0:8081')
+        x = requests.get('http://127.0.0.1:8080')
         current_datetime = datetime.now().strftime("%d/%m/%Y %H:%M ")
         self.wfile.write(bytes(current_datetime + x.text, "utf-8"))
 
